@@ -33,20 +33,15 @@ public class FuzzyMatch extends GenericUDF {
 
     @Override
     public ObjectInspector initialize(ObjectInspector[] arguments) throws UDFArgumentException {
-        ObjectInspector first = arguments[0];
-        ObjectInspector second = arguments[1];
-        ObjectInspector algo = arguments[2];
-
         if (arguments.length == 3) {
-            first = arguments[0];
-            second = arguments[1];
-            algo = arguments[2];
-
-            if (!(first instanceof StringObjectInspector) || !(second instanceof StringObjectInspector) 
-                    || !(algo instanceof StringObjectInspector)) {
+            if (!(arguments[0] instanceof StringObjectInspector) || !(arguments[1] instanceof StringObjectInspector) 
+                    || !(arguments[2] instanceof StringObjectInspector)) {
                 throw new UDFArgumentException(
                         "all required arguments must be strings - algo in third position, available : jw, ng, lv, or llv");
                     }
+            firstStringInspector  = (StringObjectInspector) arguments[0];
+            secondStringInspector  = (StringObjectInspector) arguments[1];
+            algoInspector  = (StringObjectInspector) arguments[2];
 
         } else {
             throw new UDFArgumentLengthException("FuzzyMatch takes 3 required arguments [<first string>, <second string>, <scoring algo>]");
