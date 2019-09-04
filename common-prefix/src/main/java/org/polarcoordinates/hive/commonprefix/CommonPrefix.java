@@ -43,14 +43,14 @@ public class CommonPrefix extends GenericUDF {
         int count = 0;
         if (first.length() > second.length()) {
             for (char c : second.toCharArray()) {
-                if (c == first.charAt(0)) {
+                if (c == first.charAt(count)) {
                     result.append(c);
                     ++count;
                 } else return result.toString();
             }
         } else {
             for (char c : first.toCharArray()) {
-                if (c == second.charAt(0)) {
+                if (c == second.charAt(count)) {
                     result.append(c);
                     ++count;
                 } else return result.toString();
