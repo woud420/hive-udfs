@@ -31,7 +31,7 @@ public class UUID5 extends GenericUDF {
             throw new UDFArgumentLengthException("UUID5 takes 2 required arguments [<namespace string>, <value string>]");
         }
 
-        return PrimitiveObjectInspectorFactory.javaFloatObjectInspector;
+        return PrimitiveObjectInspectorFactory.javaStringObjectInspector;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class UUID5 extends GenericUDF {
             }
         }
 
-        return UUID5_Helper.fromUTF8(namespaceUUID, value);
+            return UUID5_Helper.fromUTF8(namespaceUUID, value).toString();
     }
 
     @Override
