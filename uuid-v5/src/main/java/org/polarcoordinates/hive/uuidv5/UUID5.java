@@ -38,6 +38,7 @@ public class UUID5 extends GenericUDF {
     public Object evaluate(GenericUDF.DeferredObject[] arguments) throws HiveException {
         
         UUID namespaceUUID;
+
         String namespace = firstStringInspector.getPrimitiveJavaObject(arguments[0].get());
         String value = secondStringInspector.getPrimitiveJavaObject(arguments[1].get());
 
@@ -59,7 +60,7 @@ public class UUID5 extends GenericUDF {
             }
         }
 
-            return UUID5_Helper.fromUTF8(namespaceUUID, value).toString();
+        return UUID5_Helper.fromUTF8(namespaceUUID, value).toString();
     }
 
     @Override
@@ -68,4 +69,3 @@ public class UUID5 extends GenericUDF {
     }
 
 }
-
