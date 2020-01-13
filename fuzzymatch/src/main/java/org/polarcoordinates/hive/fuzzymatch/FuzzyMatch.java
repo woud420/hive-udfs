@@ -64,9 +64,9 @@ public class FuzzyMatch extends GenericUDF {
         // No Matter the algo, if they're both empty or null strings, distance will be 1
         if (first == null || first.length() == 0) {
             if (second == null || second.length() == 0)
-                return 1;
+                return 1.0;
             else
-                return 0;
+                return 0.0;
         }
 
         switch (algo) {
